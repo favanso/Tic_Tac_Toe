@@ -1,12 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" content="google-chrome">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      http-equiv="X-UA-Compatible"
+      content="IE=edge"
+      content="google-chrome"
+      content="mozilla"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type="text/javascript" src="scripts/script.js"></script>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <title>Tic-Tac-Toe</title>
+  </head>
+  <header>
+    <h1>Tic-Tac-Toe Game</h1>
+    <nav></nav>
+  </header>
+  <body>
+      <main>
+    <h2>Scoreboard</h2>
+    <table class="scoreboard">
+      <tr>
+        <th>Player</th>
+        <th>Points</th>
+      </tr>
+      <tr class="Machine_P2">
+        <td class="name">Machine / Player 2</td>
+        <td class="total">0</td>
+      </tr>
+      <tr class="P1">
+        <td class="name">Player 1</td>
+        <td class="total">0</td>
+      </tr>
+      <tr class="total-plays">
+        <td></td>
+      </tr>
+    </table>
+
+    <div class="options">
+      <form action="/scripts/script.js">
+        <p>Select the mode of game</p>
+        <input type="radio" id="PvP" name="PvP" value="PvP" />
+        <label for="PvP">Player v Player</label><br />
+        <input type="radio" id="PvC" name="PvC" value="PvC" />
+        <label for="PvC">Player v Computer</label><br />
+        <input type="submit" value="Submit" />
+      </form>
+    </div>
+
+    <div>
+      <h3>Start/Restart</h3>
+      <button action="/scripts/script.js" id="start-restart" type="button">Start/Restart</button>
+    </div>
+
+    <div>
+        <h3>Game</h3>
+      <table class="game-table">
+        <tr id="fisrt-row">
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        <tr id="second-row"> 
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+        <tr id="third-row">
+          <td>0</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+      </table>
+    </div>
+</main>
+  </body>
+  <footer></footer>
 </html>
