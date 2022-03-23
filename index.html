@@ -10,71 +10,76 @@
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script type="text/javascript" src="scripts/script.js"></script>
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="/styles/styles.css" />
     <title>Tic-Tac-Toe</title>
   </head>
   <header>
     <h1>Tic-Tac-Toe Game</h1>
-    <nav></nav>
   </header>
   <body>
-      <main>
-    <h2>Scoreboard</h2>
-    <table class="scoreboard">
-      <tr>
-        <th>Player</th>
-        <th>Points</th>
-      </tr>
-      <tr class="Machine_P2">
-        <td class="name">Machine / Player 2</td>
-        <td class="total">0</td>
-      </tr>
-      <tr class="P1">
-        <td class="name">Player 1</td>
-        <td class="total">0</td>
-      </tr>
-      <tr class="total-plays">
-        <td></td>
-      </tr>
-    </table>
+    <main>
+      <div class="grid1">
+        <div class="cell1">
+          <h2>Scoreboard</h2>
+          <table class="table-results">
+            <thead>
+              <tr>
+                <th class="table-header">Player</th>
+                <th class="table-header">Points</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="table-body"></td>
+                <td class="table-body"></td>
+              </tr>
+              <tr>
+                <td class="table-body"></td>
+                <td class="table-body"></td>
+              </tr>
+            </tbody>
+          </table>
+          <h2>Game Mode</h2>
+          <div class="container">
+            <div class="options">
+              <form action="/scripts/script.js">
+                <input type="radio" id="PvP" name="option" value="PvP" />
+                <label for="PvP">Player v Player</label><br />
+                <input type="radio" id="PvC" name="option" value="PvC" />
+                <label for="PvC">Player v Computer</label><br /><br />
+                <input class="button-players" type="submit" value="Submit" />
+              </form>
+            </div>
+            <br />
 
-    <div class="options">
-      <form action="/scripts/script.js">
-        <p>Select the mode of game</p>
-        <input type="radio" id="PvP" name="PvP" value="PvP" />
-        <label for="PvP">Player v Player</label><br />
-        <input type="radio" id="PvC" name="PvC" value="PvC" />
-        <label for="PvC">Player v Computer</label><br />
-        <input type="submit" value="Submit" />
-      </form>
-    </div>
-
-    <div>
-      <h3>Start/Restart</h3>
-      <button action="/scripts/script.js" id="start-restart" type="button">Start/Restart</button>
-    </div>
-
-    <div>
-        <h3>Game</h3>
-      <table class="game-table">
-        <tr id="fisrt-row">
-          <td>0</td>
-          <td>0</td>
-          <td>0</td>
-        </tr>
-        <tr id="second-row"> 
-          <td>0</td>
-          <td>0</td>
-          <td>0</td>
-        </tr>
-        <tr id="third-row">
-          <td>0</td>
-          <td>0</td>
-          <td>0</td>
-        </tr>
-      </table>
-    </div>
-</main>
+            <div>
+              <!-- <h3>Start/Restart</h3> -->
+              <button
+                class="start-button"
+                action="/scripts/script.js"
+                id="start-restart"
+                type="button"
+              >
+                Start/Restart
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="container">
+          <h2>Game</h2>
+          <div class="grid">
+            <div class="cell" id="0"></div>
+            <div class="cell" id="1"></div>
+            <div class="cell" id="2"></div>
+            <div class="cell" id="3"></div>
+            <div class="cell" id="4"></div>
+            <div class="cell" id="5"></div>
+            <div class="cell" id="6"></div>
+            <div class="cell" id="7"></div>
+            <div class="cell" id="8"></div>
+          </div>
+        </div>
+      </div>
+    </main>
   </body>
-  <footer></footer>
 </html>
