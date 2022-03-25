@@ -20,9 +20,9 @@
     <main>
       <div class="grid1">
         <div class="cell1">
-          <h3>Number of Games Played</h3>
-          <h4 id="gamePlayed">0</h4>
-          <h3>Game Mode</h3>
+          <h3>TIMER</h3>
+          <h4 id="timer">0</h4>
+          <h3 id="gameMode">Game Mode</h3>
           <div class="container">
             <div>
               <input
@@ -44,18 +44,17 @@
               type="button"
               class="start-button"
             >
-              Start / Restart
+              Start
             </button>
 
             <button
               action="/scripts/script.js"
-              id="playAgain"
-              class="playAgain"
+              id="restart"
+              class="restart"
               type="button"
-              onClick="playAgain()"
-              disabled="true"
+              onClick="restart()"
             >
-              Play Again?
+              Restart
             </button>
           </div>
         </div>
