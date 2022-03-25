@@ -3,7 +3,11 @@ const drawMessage = () => `Game ended in a draw!`;
 const currentPlayerTurn = () => `It's ${currentPlayer}'s turn`;
 let gameState = ["", "", "", "", "", "", "", "", ""];
 let currentPlayer = "X";
-// let gameActive = false;
+let minute = 0;
+let second = 0;
+let millisecond = 0;
+let cron;
+
 const winningConditions = [
   [0, 1, 2],
   [3, 4, 5],
@@ -16,6 +20,8 @@ const winningConditions = [
 ];
 
 function start() {
+    resetTimer();
+    cron = setInterval(() => { timer(); }, 10);
   if (document.getElementById("PvP").checked) {
     chose = "Player v Player. <br/>";
   } else {
@@ -31,15 +37,14 @@ function start() {
     "Starting a New Game. <br/>" + chose + currentPlayer + " starts First.";
 }
 
-function restart() {
-  var txt;
+function restart(text) {
+  var txt = text;
   if (
-    confirm("Do you want to play again? " + winningMessage() + drawMessage())
+    confirm(txt)
   ) {
     document.getElementById("game").innerHTML = "Game";
     document.getElementById("turn").innerHTML = "Press Start!";
     document.getElementById("PvP").checked = true;
-    // RESET TIMER
     document.getElementById("0").innerHTML = "";
     document.getElementById("1").innerHTML = "";
     document.getElementById("2").innerHTML = "";
@@ -50,11 +55,11 @@ function restart() {
     document.getElementById("7").innerHTML = "";
     document.getElementById("8").innerHTML = "";
     gameState = ["", "", "", "", "", "", "", "", ""];
-    txt = "Press Start button to Play";
+    txt2 = "Press Start button to Play";
   } else {
-    txt = "Thank you for playing";
+    txt2 = "Thank you for playing";
   }
-  document.getElementById("game").innerHTML = txt;
+  document.getElementById("game").innerHTML = txt2;
 }
 
 function cell0() {
@@ -137,12 +142,12 @@ function handleResultValidation() {
     }
   }
   if (roundWon) {
-    restart();
+    restart("Do you want to play again? \n" + winningMessage());
     return;
   }
   let roundDraw = !gameState.includes("");
   if (roundDraw) {
-    restart();
+    restart("Do you want to play again? \n" + drawMessage());
     return;
   }
 
@@ -159,5 +164,42 @@ function handlePlayerChange() {
 }
 
 function Computer() {
-  //random and check
+  numberChose = Math.floor(Math.random() * 9);
+  if (gameState[numberChose] == ""){
+      //Preenche no game state com X
+      //ACHAR UMA FORMA DE PREENCHER O GRID
+  }
 }
+
+
+function timer() {
+    if ((millisecond += 10) == 1000) {
+      millisecond = 0;
+      second++;
+    }
+    if (second == 60) {
+      second = 0;
+      minute++;
+    }
+    if (minute == 60) {
+      minute = 0;
+      hour++;
+    }
+  document.getElementById('minute').innerText = returnData(minute);
+  document.getElementById('second').innerText = returnData(second);
+ 
+}
+
+function resetTimer() {
+    minute = 0;
+    second = 0;
+    millisecond = 0;
+    
+    document.getElementById('minute').innerText = '00';
+    document.getElementById('second').innerText = '00';
+    
+  }
+
+  function returnData(input) {
+    return input > 10 ? input : `0${input}`
+  }
