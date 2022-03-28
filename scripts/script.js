@@ -20,8 +20,10 @@ const winningConditions = [
 ];
 
 function start() {
-    resetTimer();
-    cron = setInterval(() => { timer(); }, 10);
+  resetTimer();
+  cron = setInterval(() => {
+    timer();
+  }, 10);
   if (document.getElementById("PvP").checked) {
     chose = "Player v Player. <br/>";
   } else {
@@ -35,13 +37,14 @@ function start() {
   }
   document.getElementById("turn").innerHTML =
     "Starting a New Game. <br/>" + chose + currentPlayer + " starts First.";
+  if (document.getElementById("PvC").checked && currentPlayer == "O") {
+    setTimeout(Computer(), 2000);
+  }
 }
 
 function restart(text) {
   var txt = text;
-  if (
-    confirm(txt)
-  ) {
+  if (confirm(txt)) {
     document.getElementById("game").innerHTML = "Game";
     document.getElementById("turn").innerHTML = "Press Start!";
     document.getElementById("PvP").checked = true;
@@ -60,6 +63,7 @@ function restart(text) {
     txt2 = "Thank you for playing";
   }
   document.getElementById("game").innerHTML = txt2;
+  disableScreen();
 }
 
 function cell0() {
@@ -159,47 +163,116 @@ function handlePlayerChange() {
 
   document.getElementById("turn").innerHTML = currentPlayerTurn();
   if (document.getElementById("PvC").checked && currentPlayer == "O") {
-    setTimeout(Computer(), 2000);
+    setTimeout(Computer(), 5000);
   }
 }
 
 function Computer() {
   numberChose = Math.floor(Math.random() * 9);
-  if (gameState[numberChose] == ""){
-      //Preenche no game state com X
-      //ACHAR UMA FORMA DE PREENCHER O GRID
+  if (gameState[numberChose] == "") {
+    switch (numberChose) {
+      case 0:
+        document.getElementById("0").innerHTML = currentPlayer;
+        break;
+      case 1:
+        document.getElementById("1").innerHTML = currentPlayer;
+        break;
+      case 2:
+        document.getElementById("2").innerHTML = currentPlayer;
+        break;
+      case 3:
+        document.getElementById("3").innerHTML = currentPlayer;
+        break;
+      case 4:
+        document.getElementById("4").innerHTML = currentPlayer;
+        break;
+      case 5:
+        document.getElementById("5").innerHTML = currentPlayer;
+        break;
+      case 6:
+        document.getElementById("6").innerHTML = currentPlayer;
+        break;
+      case 7:
+        document.getElementById("7").innerHTML = currentPlayer;
+        break;
+      case 8:
+        document.getElementById("8").innerHTML = currentPlayer;
+        break;
+    }
+    gameState[numberChose] = currentPlayer;
+    handleResultValidation();
+  } else {
+    for (i = 0; gameState.length; i++) {
+      if (gameState[i] == "") {
+        switch (numberChose) {
+          case 0:
+            document.getElementById("0").innerHTML = currentPlayer;
+            break;
+          case 1:
+            document.getElementById("1").innerHTML = currentPlayer;
+            break;
+          case 2:
+            document.getElementById("2").innerHTML = currentPlayer;
+            break;
+          case 3:
+            document.getElementById("3").innerHTML = currentPlayer;
+            break;
+          case 4:
+            document.getElementById("4").innerHTML = currentPlayer;
+            break;
+          case 5:
+            document.getElementById("5").innerHTML = currentPlayer;
+            break;
+          case 6:
+            document.getElementById("6").innerHTML = currentPlayer;
+            break;
+          case 7:
+            document.getElementById("7").innerHTML = currentPlayer;
+            break;
+          case 8:
+            document.getElementById("8").innerHTML = currentPlayer;
+            break;
+        }
+      }
+      gameState[i] = currentPlayer;
+      handleResultValidation();
+      return;
+    }
   }
 }
 
-
 function timer() {
-    if ((millisecond += 10) == 1000) {
-      millisecond = 0;
-      second++;
-    }
-    if (second == 60) {
-      second = 0;
-      minute++;
-    }
-    if (minute == 60) {
-      minute = 0;
-      hour++;
-    }
-  document.getElementById('minute').innerText = returnData(minute);
-  document.getElementById('second').innerText = returnData(second);
- 
+  if ((millisecond += 10) == 1000) {
+    millisecond = 0;
+    second++;
+  }
+  if (second == 60) {
+    second = 0;
+    minute++;
+  }
+  if (minute == 60) {
+    minute = 0;
+    hour++;
+  }
+  document.getElementById("minute").innerText = returnData(minute);
+  document.getElementById("second").innerText = returnData(second);
 }
 
 function resetTimer() {
-    minute = 0;
-    second = 0;
-    millisecond = 0;
-    
-    document.getElementById('minute').innerText = '00';
-    document.getElementById('second').innerText = '00';
-    
-  }
+  minute = 0;
+  second = 0;
+  millisecond = 0;
 
-  function returnData(input) {
-    return input > 10 ? input : `0${input}`
-  }
+  document.getElementById("minute").innerText = "00";
+  document.getElementById("second").innerText = "00";
+}
+
+function returnData(input) {
+  return input > 10 ? input : `0${input}`;
+}
+function disableScreen() {
+
+  var div= document.createElement("div");
+  div.className += "overlay";
+  document.body.appendChild(div);
+}
