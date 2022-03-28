@@ -61,9 +61,10 @@ function restart(text) {
     txt2 = "Press Start button to Play";
   } else {
     txt2 = "Thank you for playing";
+    disableScreen();
   }
   document.getElementById("game").innerHTML = txt2;
-  disableScreen();
+  
 }
 
 function cell0() {
