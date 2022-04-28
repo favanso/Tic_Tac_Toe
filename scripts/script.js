@@ -19,6 +19,8 @@ const winningConditions = [
   [2, 4, 6],
 ];
 
+
+
 function start() {
   resetTimer();
   cron = setInterval(() => {
